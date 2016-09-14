@@ -1,5 +1,6 @@
 public class MagnitudeTests {
 
+  // Currency class test
   public static boolean testCurrency() {
     Currency c1 = new Currency( 10.50 );
     Currency c2 = new Currency( 11.50 );
@@ -26,6 +27,7 @@ public class MagnitudeTests {
     return true;
   }
 
+  // CartPoint class test
   public static boolean testCartPoint() {
     CartPoint c1 = new CartPoint( 1.0, 4.0 );
     CartPoint c2 = new CartPoint( 5.0, 5.0 );
@@ -51,10 +53,10 @@ public class MagnitudeTests {
       return false;
     if ( !c3.greaterThan(c1) )
       return false;
-
     if ( c5.notEqual(c4) )
       return false;
-
+    if ( !c5.equalsTo(c4) )
+      return false
     return true;
   }
 

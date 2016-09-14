@@ -1,3 +1,8 @@
+/*
+ * Magnitude is an abstract class that provides inheritable functionality
+ * for boolean algebra when using objects that are subclasses of Magnitude
+ */
+
 public abstract class Magnitude {
   /*
    * Abstract method lessThan() that must be overriden by
