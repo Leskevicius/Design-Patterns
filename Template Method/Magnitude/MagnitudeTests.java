@@ -55,8 +55,8 @@ public class MagnitudeTests {
       return false;
     if ( c5.notEqual(c4) )
       return false;
-    if ( !c5.equalsTo(c4) )
-      return false
+    if ( !c5.equalTo(c4) )
+      return false;
     return true;
   }
 
