@@ -1,14 +1,5 @@
 public class Test {
   public static void main(String[] args) {
-    // Composite ac;
-    // Composite ac2;
-    // Composite ac3;
-    // ac3 = new SimpleComposite(new Leaf( "X" ));
-    // ac2 = new ArrayComposite(new Leaf( "A" ), new Leaf( "B" ), new Leaf( "C" ));
-    // ac = new ArrayComposite(new Leaf( "D" ), ac2, new Leaf( "E" ), ac3, new Leaf( "F" ));
-    // ac.toString();
-    // ac2.toString();
-    // ac3.toString();
 
     // Daves sample
     Composite lc;
@@ -16,13 +7,15 @@ public class Test {
 
     lc = new LinkedComposite( new Leaf( "A" ), new Leaf( "B" ) );
     ac = new ArrayComposite( new Leaf( "C" ), lc, new Leaf( "D" ) );
-    // ac.toString();
+    ac.toString();
 
     // Other Tests
     Composite lc2;
     Composite ac2;
     Composite sc;
     Composite sc2;
+    Composite lc3;
+
     ac2 = new ArrayComposite( new Leaf( "1" ), new Leaf( "2" ), new Leaf( "3" ), new Leaf( "4" ) );
     sc = new SimpleComposite();
     sc2 = new SimpleComposite( ac2 );
@@ -30,6 +23,14 @@ public class Test {
     lc2.toString();
     lc2.remove(sc2);
     lc2.toString();
+    sc.add(ac);
+    lc2.toString();
 
+    lc3 = new LinkedComposite();
+    lc3.add(new Leaf( "8" ));
+    lc3.add(new ArrayComposite( new Leaf( "9" ), new Leaf( "owned" )));
+    lc2.add(lc3);
+    ac2.add(ac);
+    lc2.toString();
   }
 }

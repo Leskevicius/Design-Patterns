@@ -40,7 +40,6 @@ public class LinkedList<E> {
   }
 
   public boolean remove(E e) {
-    print_contents();
     if (head == null) {
       return false;
     }
@@ -52,13 +51,13 @@ public class LinkedList<E> {
     }
 
     Node<E> temp = head;
-    while ((temp = temp.getNext()) != null) {
-      if (temp.getData() == e) {
-        temp = temp.getNext();
+    while (temp.getNext() != null) {
+      if (temp.getNext().getData() == e) {
+        temp.setNext(temp.getNext().getNext());
         size--;
-        print_contents();
         return true;
       }
+      temp = temp.getNext();
     }
     return false;
   }
