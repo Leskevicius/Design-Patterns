@@ -62,10 +62,12 @@ public class LinkedComposite extends Composite {
 
   // removes a child from the component
   public void remove(Component childComponent) {
+    // children.print_contents();
     boolean success = children.remove(childComponent);
     if (success) {
       childComponent.setParent(null);
       childCount--;
+      // children.print_contents();
     }
     else {
       System.out.println("Given child could not be found");

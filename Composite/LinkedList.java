@@ -40,11 +40,12 @@ public class LinkedList<E> {
   }
 
   public boolean remove(E e) {
+    print_contents();
     if (head == null) {
       return false;
     }
 
-    if (head == e) {
+    if (head.getData() == e) {
       head = head.getNext();
       size--;
       return true;
@@ -52,9 +53,10 @@ public class LinkedList<E> {
 
     Node<E> temp = head;
     while ((temp = temp.getNext()) != null) {
-      if (temp == e) {
+      if (temp.getData() == e) {
         temp = temp.getNext();
         size--;
+        print_contents();
         return true;
       }
     }
@@ -83,5 +85,14 @@ public class LinkedList<E> {
     } else {
       return false;
     }
+  }
+
+  public void print_contents() {
+    System.out.println(head.getData().hashCode());
+    Node<E> temp = head;
+    while ((temp = temp.getNext()) != null) {
+      System.out.println(temp.getData().hashCode());
+    }
+    System.out.println("");
   }
 }

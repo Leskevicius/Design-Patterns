@@ -9,8 +9,9 @@ public class SimpleComposite extends Composite {
     childCount = 0;
   }
 
-  public SimpleComposite(Leaf child) {
+  public SimpleComposite(Component child) {
     this.child = child;
+    this.child.setParent(this);
     childCount = 1;
   }
 
