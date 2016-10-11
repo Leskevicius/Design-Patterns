@@ -7,7 +7,8 @@ public class Test {
 
     lc = new LinkedComposite( new Leaf( "A" ), new Leaf( "B" ) );
     ac = new ArrayComposite( new Leaf( "C" ), lc, new Leaf( "D" ) );
-    ac.toString();
+    // System.out.println(ac.toString());
+    System.out.println(lc.toString());
 
     // Other Tests
     Composite lc2;
@@ -26,11 +27,18 @@ public class Test {
     sc.add(ac);
     lc2.toString();
 
+    Component ownedLeaf = new Leaf( "owned" );
+
     lc3 = new LinkedComposite();
     lc3.add(new Leaf( "8" ));
-    lc3.add(new ArrayComposite( new Leaf( "9" ), new Leaf( "owned" )));
+    lc3.add(new ArrayComposite( new Leaf( "9" ), ownedLeaf));
     lc2.add(lc3);
     ac2.add(ac);
     lc2.toString();
+    // 17 is the child of 21 is the child of 18 is the child of 16 is the root.
+    System.out.println(ownedLeaf.toString());
+
+
+    sc.makeIter();
   }
 }

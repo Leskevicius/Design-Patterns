@@ -8,8 +8,8 @@ public class Leaf extends Component {
   }
 
   // implementation of toString
-  public String toString() {
-    System.out.println("Leaf " + id);
-    return "";
-  }
+  // public String toString() {
+  //   System.out.println("Leaf " + id);
+  //   return "";
+  // }
 }

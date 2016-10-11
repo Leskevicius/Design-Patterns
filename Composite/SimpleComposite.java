@@ -1,18 +1,13 @@
 public class SimpleComposite extends Composite {
   // private variables
-  private Component child;
-  private int childCount;
+  private Component child = null;
+  private int childCount = 0;
 
   // constructors
-  public SimpleComposite() {
-    child = null;
-    childCount = 0;
-  }
+  public SimpleComposite() {}
 
   public SimpleComposite(Component child) {
-    this.child = child;
-    this.child.setParent(this);
-    childCount = 1;
+    add(child);
   }
 
   // implementation of toString
@@ -20,40 +15,39 @@ public class SimpleComposite extends Composite {
   // In order to figure out how many tabs to use when printing children,
   // this function traverses to the root, and storing this count to depth
   // This depth is later used to print the children
-  public String toString() {
-    int depth = 0;
-    if (getParent() != null) {
-      depth++;
-
-      Component tempComp = getParent();
-      while ((tempComp = tempComp.getParent()) != null) {
-        depth++;
-      }
-    }
-
-    String tabs = "\t";
-    for (int i = 0; i < depth; i++) {
-      tabs = tabs + '\t';
-    }
-
-    if (childCount > 0) {
-      System.out.println("SimpleComposite containing");
-      System.out.print(tabs);
-      System.out.print(child.toString());
-    }
-    else {
-      System.out.println("SimpleComposite");
-    }
-    return "";
-  }
+  // public String toString() {
+  //   int depth = 0;
+  //   if (getParent() != null) {
+  //     depth++;
+  //
+  //     Component tempComp = getParent();
+  //     while ((tempComp = tempComp.getParent()) != null) {
+  //       depth++;
+  //     }
+  //   }
+  //
+  //   String tabs = "\t";
+  //   for (int i = 0; i < depth; i++) {
+  //     tabs = tabs + '\t';
+  //   }
+  //
+  //   if (childCount > 0) {
+  //     System.out.println("SimpleComposite containing");
+  //     System.out.print(tabs);
+  //     System.out.print(child.toString());
+  //   }
+  //   else {
+  //     System.out.println("SimpleComposite");
+  //   }
+  //   return "";
+  // }
 
   // superclass abstract functions implemented
 
   // adds a new child to the component
-  public void add(Component childComponent) {
+  public void doAdd(Component childComponent) {
     if (child == null) {
       child = childComponent;
-      childComponent.setParent(this);
       childCount++;
     }
     else {
@@ -62,10 +56,9 @@ public class SimpleComposite extends Composite {
   }
 
   // removes a child from the component
-  public void remove(Component childComponent) {
+  public void doRemove(Component childComponent) {
     if (child == childComponent) {
       child = null;
-      childComponent.setParent(null);
       childCount--;
     }
     else {
@@ -82,5 +75,11 @@ public class SimpleComposite extends Composite {
       System.out.println("Component has no children");
       return null;
     }
+  }
+
+  // iterator
+  public Iter<Component> makeIter() {
+    Iter<Component> iter = new SimpleIter<Component>(child);
+    return iter;
   }
 }
