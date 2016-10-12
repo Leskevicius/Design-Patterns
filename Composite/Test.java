@@ -39,6 +39,6 @@ public class Test {
     System.out.println(ownedLeaf.toString());
 
 
-    sc.makeIter();
+    sc2.makeIter();
   }
 }
