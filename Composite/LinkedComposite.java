@@ -1,17 +1,17 @@
 public class LinkedComposite extends Composite {
   // private variables
   private int childCount = 0;
-  private LinkedList<Component> children;
+  private LinkedList<Composite> children;
 
   // constructors
   public LinkedComposite() {
-    children = new LinkedList<Component>();
+    children = new LinkedList<Composite>();
   }
 
-  public LinkedComposite(Component... newChildren) {
-    children = new LinkedList<Component>();
+  public LinkedComposite(Composite... newChildren) {
+    children = new LinkedList<Composite>();
 
-    for (Component child : newChildren) {
+    for (Composite child : newChildren) {
       add(child);
     }
   }
@@ -25,7 +25,7 @@ public class LinkedComposite extends Composite {
   //   if (getParent() != null) {
   //     depth++;
   //
-  //     Component tempComp = getParent();
+  //     Composite tempComp = getParent();
   //     while ((tempComp = tempComp.getParent()) != null) {
   //       depth++;
   //     }
@@ -52,14 +52,14 @@ public class LinkedComposite extends Composite {
   // superclass abstract functions implemented
 
   // adds a new child to the component
-  public void doAdd(Component childComponent) {
-    children.add(childComponent);
+  public void doAdd(Composite childComposite) {
+    children.add(childComposite);
     childCount++;
   }
 
   // removes a child from the component
-  public void doRemove(Component childComponent) {
-    boolean success = children.remove(childComponent);
+  public void doRemove(Composite childComposite) {
+    boolean success = children.remove(childComposite);
     if (success) {
       childCount--;
     }
@@ -69,8 +69,8 @@ public class LinkedComposite extends Composite {
   }
 
   // allows for accessing children by index [order they were added]
-  public Component getChild(int index) {
-    Component child = children.get(index);
+  public Composite getChild(int index) {
+    Composite child = children.get(index);
 
     if (child == null) {
       System.out.println("Invalid index");
@@ -82,8 +82,8 @@ public class LinkedComposite extends Composite {
   }
 
   // iterator
-  public Iter<Component> makeIter() {
-    Iter<Component> iter = new LinkedIter<Component>(children);
+  public Iter<Composite> makeIter() {
+    Iter<Composite> iter = new LinkedIter<Composite>(children);
     return iter;
   }
 }

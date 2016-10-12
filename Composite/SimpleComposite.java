@@ -1,12 +1,12 @@
 public class SimpleComposite extends Composite {
   // private variables
-  private Component child = null;
+  private Composite child = null;
   private int childCount = 0;
 
   // constructors
   public SimpleComposite() {}
 
-  public SimpleComposite(Component child) {
+  public SimpleComposite(Composite child) {
     add(child);
   }
 
@@ -20,7 +20,7 @@ public class SimpleComposite extends Composite {
   //   if (getParent() != null) {
   //     depth++;
   //
-  //     Component tempComp = getParent();
+  //     Composite tempComp = getParent();
   //     while ((tempComp = tempComp.getParent()) != null) {
   //       depth++;
   //     }
@@ -45,9 +45,9 @@ public class SimpleComposite extends Composite {
   // superclass abstract functions implemented
 
   // adds a new child to the component
-  public void doAdd(Component childComponent) {
+  public void doAdd(Composite childComposite) {
     if (child == null) {
-      child = childComponent;
+      child = childComposite;
       childCount++;
     }
     else {
@@ -56,8 +56,8 @@ public class SimpleComposite extends Composite {
   }
 
   // removes a child from the component
-  public void doRemove(Component childComponent) {
-    if (child == childComponent) {
+  public void doRemove(Composite childComposite) {
+    if (child == childComposite) {
       child = null;
       childCount--;
     }
@@ -67,19 +67,19 @@ public class SimpleComposite extends Composite {
   }
 
   // allows access to children by index [order by which they were added]
-  public Component getChild(int index) {
+  public Composite getChild(int index) {
     if (index + 1 > 0 && index < childCount) {
       return child;
     }
     else {
-      System.out.println("Component has no children");
+      System.out.println("Composite has no children");
       return null;
     }
   }
 
   // iterator
-  public Iter<Component> makeIter() {
-    Iter<Component> iter = new SimpleIter<Component>(child);
+  public Iter<Composite> makeIter() {
+    Iter<Composite> iter = new SimpleIter<Composite>(child);
     return iter;
   }
 }

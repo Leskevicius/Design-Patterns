@@ -3,24 +3,24 @@ public class ArrayComposite extends Composite {
   private int DEFAULT_SIZE = 50;
   private int childCount = 0;
   private int capacity;
-  private Component children[];
+  private Composite children[];
 
   // constructors
   public ArrayComposite() {
-    children = new Component[DEFAULT_SIZE];
+    children = new Composite[DEFAULT_SIZE];
     capacity = DEFAULT_SIZE;
   }
 
   public ArrayComposite(int size) {
-    children = new Component[size];
+    children = new Composite[size];
     capacity = size;
   }
 
-  public ArrayComposite(Component... newChildren) {
-    children = new Component[DEFAULT_SIZE];
+  public ArrayComposite(Composite... newChildren) {
+    children = new Composite[DEFAULT_SIZE];
     capacity = DEFAULT_SIZE;
 
-    for (Component child : newChildren) {
+    for (Composite child : newChildren) {
       add(child);
     }
   }
@@ -34,7 +34,7 @@ public class ArrayComposite extends Composite {
   //   if (getParent() != null) {
   //     depth++;
   //
-  //     Component tempComp = getParent();
+  //     Composite tempComp = getParent();
   //     while ((tempComp = tempComp.getParent()) != null) {
   //       depth++;
   //     }
@@ -61,9 +61,9 @@ public class ArrayComposite extends Composite {
   // superclass abstract functions implemented
 
   // adds a new child to the component
-  public void doAdd(Component childComponent) {
+  public void doAdd(Composite childComposite) {
     if (childCount < capacity) {
-      children[childCount] = childComponent;
+      children[childCount] = childComposite;
       childCount++;
     }
     else {
@@ -72,9 +72,9 @@ public class ArrayComposite extends Composite {
   }
 
   // removes a child from the component
-  public void doRemove(Component childComponent) {
+  public void doRemove(Composite childComposite) {
     for (int i = 0; i < childCount; i++) {
-      if (children[i] == childComponent) {
+      if (children[i] == childComposite) {
         children[i] = null;
         childCount--;
         shiftChildren(i);
@@ -85,7 +85,7 @@ public class ArrayComposite extends Composite {
   }
 
   // allows access of children by index (order they were added)
-  public Component getChild(int index) {
+  public Composite getChild(int index) {
     if (index >= 0 && index < childCount) {
       return children[index];
     }
@@ -102,8 +102,8 @@ public class ArrayComposite extends Composite {
   }
 
   // iterator
-  public Iter<Component> makeIter() {
-    Iter<Component> iter = new ArrayIter<Component>(children);
+  public Iter<Composite> makeIter() {
+    Iter<Composite> iter = new ArrayIter<Composite>(children);
     return iter;
   }
 }

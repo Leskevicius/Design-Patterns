@@ -5,6 +5,14 @@ public class Test {
     Composite lc;
     Composite ac;
 
+    /*
+    ArrayComposite containing
+      Leaf C
+      LinkedComposite containing
+        Leaf A
+        Leaf B
+      Leaf D
+    */
     lc = new LinkedComposite( new Leaf( "A" ), new Leaf( "B" ) );
     ac = new ArrayComposite( new Leaf( "C" ), lc, new Leaf( "D" ) );
     // System.out.println(ac.toString());
@@ -27,7 +35,7 @@ public class Test {
     sc.add(ac);
     lc2.toString();
 
-    Component ownedLeaf = new Leaf( "owned" );
+    Composite ownedLeaf = new Leaf( "owned" );
 
     lc3 = new LinkedComposite();
     lc3.add(new Leaf( "8" ));

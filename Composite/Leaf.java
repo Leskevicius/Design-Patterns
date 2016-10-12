@@ -1,4 +1,4 @@
-public class Leaf extends Component {
+public class Leaf extends Composite {
   // private variables
   private String id;
 
