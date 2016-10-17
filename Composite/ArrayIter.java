@@ -1,9 +1,11 @@
 public class ArrayIter<T> implements Iter<T> {
   private T[] tArray;
   private int index = 0;
+  private int size = 0;
 
-  public ArrayIter(T[] tArray) {
+  public ArrayIter(T[] tArray, int size) {
     this.tArray = tArray.clone();
+    this.size = size;
   }
 
   public void first() {
@@ -15,7 +17,7 @@ public class ArrayIter<T> implements Iter<T> {
   }
 
   public boolean isDone() {
-    if (index >= tArray.length)
+    if (index >= size)
       return true;
     else
       return false;

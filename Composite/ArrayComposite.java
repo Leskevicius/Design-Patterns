@@ -103,7 +103,7 @@ public class ArrayComposite extends Composite {
 
   // iterator
   public Iter<Composite> makeIter() {
-    Iter<Composite> iter = new ArrayIter<Composite>(children);
+    Iter<Composite> iter = new ArrayIter<Composite>(children, childCount);
     return iter;
   }
 }

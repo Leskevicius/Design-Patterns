@@ -36,17 +36,4 @@ public class PreOrderIter<T> implements Iter<T> {
     else
       return currentElement;
   }
-  /*
-  ArrayComposite containing
-    Leaf C
-    LinkedComposite containing
-      Leaf A
-      Leaf B
-    Leaf D
-  */
-  // lc = new LinkedComposite( new Leaf( "A" ), new Leaf( "B" ) );
-  // ac = new ArrayComposite( new Leaf( "C" ), lc, new Leaf( "D" ) );
-  private void getNext(Iter<T> iter) {
-
-  }
 }
