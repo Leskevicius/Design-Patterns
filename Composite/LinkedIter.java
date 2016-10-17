@@ -1,21 +1,24 @@
 public class LinkedIter<T> implements Iter<T> {
-  private LinkedList<T> ll;
-  private int index = 0;
+  private Node<T> head;
+  private Node<T> current;
 
   public LinkedIter(LinkedList<T> ll) {
-    this.ll = ll;
+    head = ll.getHead();
+    current = head;
   }
 
   public void first() {
-    index = 0;
+    current = head;
   }
 
   public void next() {
-    index++;
+    if (!isDone()) {
+      current = current.getNext();
+    }
   }
 
   public boolean isDone() {
-    if (index >= ll.size())
+    if (current == null)
       return true;
     else
       return false;
@@ -25,6 +28,6 @@ public class LinkedIter<T> implements Iter<T> {
     if (isDone())
       return null;
     else
-      return ll.get(index);
+      return current.getData();
   }
 }

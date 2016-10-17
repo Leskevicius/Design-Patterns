@@ -19,7 +19,7 @@ public class PreOrderIter<T> implements Iter<T> {
     if (currentElement == null) {
       return;
     } else {
-      getNext(currentElement.getParent().makeIter);
+      // getNext(currentElement.getParent().makeIter);
     }
   }
 
